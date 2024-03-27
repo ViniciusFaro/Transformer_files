@@ -30,7 +30,7 @@ class PositionalEncoding(nn.Module):
                           .reshape(self.max_sequence_length, 1))
         even_PE = torch.sin(position / denominator) # 200 x 256
         odd_PE = torch.cos(position / denominator) # 200 x 256
-        stacked = torch.stack([even_PE, odd_PE], dim=2) # mergers them in parallel # 200 x 256 x 2
+        stacked = torch.stack([even_PE, odd_PE], dim=2) # merges them in parallel # 200 x 256 x 2
         PE = torch.flatten(stacked, start_dim=1, end_dim=2) # flatten alternating between them # 200 x 512 
         return PE
 
